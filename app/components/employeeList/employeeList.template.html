@@ -1,0 +1,13 @@
+<table border="1px solid black" class="table">
+    <thead class="thead-light">
+        <th>Id</th>
+        <th>Name</th>
+        <th>Salary</th>
+    </thead>
+    <tr ng-repeat="emp in $ctrl.list" ng-click="$ctrl.selectEmp()">
+        <td>{{emp.id}}</td>
+        <td>{{emp.name}}</td>
+        <td>{{emp.salary}}</td>
+        <td><input type="button" value="Delete" ng-click="$ctrl.deleteEmp()"></td>
+    </tr>
+</table>

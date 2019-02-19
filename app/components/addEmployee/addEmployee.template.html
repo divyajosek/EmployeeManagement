@@ -1,0 +1,14 @@
+<div>
+    <div>
+        <label for="name">Name :</label>
+        <input type="text" name="name" ng-model="$ctrl.name">
+    </div>
+    <div>
+        <label for="salary">Salary:</label>
+        <input type="number" name="salary" ng-model="$ctrl.salary"> 
+    </div>
+    <div>
+        <input type="button" value="Add" ng-click="$ctrl.onSubmit()" class="btn btn-primary">
+        <input type="button" value="Edit" ng-click="EditData()" class="btn btn-primary">
+    </div>
+</div>

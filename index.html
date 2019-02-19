@@ -1,22 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"  ng-app="mainApp">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Employee Master</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body ng-controller="mainController">
+    <div class="container">
+        <div class="row">
+            Id: {{id}}
+        </div>
+        <add-employee on-add="AddData(name,salary)"></add-employee>
+        <div class="row">
+                <employee-list list="emplist" on-select="selectData(emp)" on-delete="deleteData(emp)"></employee-list>
+        </div>
+        
+    </div>
+    
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <script src="app/controller.js"></script>
-</head>
-<body ng-app="mainApp">
-   <div ng-controller="">
-    <label for="name">Name :</label>
-    <input type="text" name="Name" id="">
-   </div>
-   <div>
-       <label for="salary">Salary:</label>
-       <input type="number" name="salary" id="">
-   </div>
-
+    <script src="app/components/addEmployee/addEmployee.js"></script>
+    <script src="app/components/employeeList/employeeList.js"></script>
 </body>
 </html>
