@@ -1,0 +1,12 @@
+<div class="my-button">
+    <span>You have clicked {{$ctrl.count}} times</span>
+    <div>
+        <button ng-click="$ctrl.onBtnClick()">{{$ctrl.txt}}</button>
+
+        <button ng-click="$ctrl.onDoneClick({
+            str: 'abc',
+            title1: 'another'
+        })">Done</button>
+    </div>
+
+</div>

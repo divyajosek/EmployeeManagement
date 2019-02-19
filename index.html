@@ -6,16 +6,27 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Employee Master</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        .my-button{
+            padding: 10px;
+            border: 1px solid #000;
+        }
+    </style>
 </head>
 <body ng-controller="mainController">
     <div class="container">
-        <div class="row">
+        <!-- <div class="row">
             Id: {{id}}
+        </div> -->
+        <div>
+            {{happyText}}
         </div>
-        <add-employee on-add="AddData(name,salary)"></add-employee>
+        <my-btn txt="button1" on-done-click="onFirstBtnCompDone(str, title1)"></my-btn>
+        <my-btn txt="my another button2"></my-btn> 
+        <!-- <add-employee on-add="AddData(name,salary)"></add-employee>
         <div class="row">
                 <employee-list list="emplist" on-select="selectData(emp)" on-delete="deleteData(emp)"></employee-list>
-        </div>
+        </div> -->
         
     </div>
     
@@ -23,5 +34,6 @@
     <script src="app/controller.js"></script>
     <script src="app/components/addEmployee/addEmployee.js"></script>
     <script src="app/components/employeeList/employeeList.js"></script>
+    <script src="app/components/myButton/myButton.js"></script>
 </body>
 </html>

@@ -2,6 +2,14 @@ var app = angular.module("mainApp",[])    ;
 app.controller("mainController",function ($scope){
     $scope.emplist=[];
     $scope.id=0;
+    $scope.firstBtnText = 'button1';
+    $scope.secondBtnText = 'my another button2';
+    $scope.happyText = 'I am happy';
+    $scope.onFirstBtnCompDone = function(str, title1){
+        $scope.happyText = str;
+        alert(title1);
+    };
+
     $scope.AddData = function (name,salary){
         var emp ={
             id:$scope.emplist.length + 1,
