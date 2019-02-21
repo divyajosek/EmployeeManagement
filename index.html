@@ -7,7 +7,7 @@
     <title>Employee Master</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <style>
-        .my-button{
+        .my-button,.add-employee{
             padding: 10px;
             border: 1px solid #000;
         }
@@ -15,19 +15,20 @@
 </head>
 <body ng-controller="mainController">
     <div class="container">
-        <!-- <div class="row">
-            Id: {{id}}
-        </div> -->
         <div>
             {{happyText}}
         </div>
         <my-btn txt="button1" on-done-click="onFirstBtnCompDone(str, title1)"></my-btn>
         <my-btn txt="my another button2"></my-btn> 
-        <!-- <add-employee on-add="AddData(name,salary)"></add-employee>
+        <div class="row">
+            Id: {{id}}
+            {{name}}
+            {{salary}}
+        </div> 
+            <add-employee on-add="AddData(name,salary)" selected-emp="selectedEmp"></add-employee>
         <div class="row">
                 <employee-list list="emplist" on-select="selectData(emp)" on-delete="deleteData(emp)"></employee-list>
-        </div> -->
-        
+        </div>
     </div>
     
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>

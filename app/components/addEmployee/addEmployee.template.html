@@ -1,14 +1,16 @@
-<div>
+<div class="add-employee">
     <div>
         <label for="name">Name :</label>
-        <input type="text" name="name" ng-model="$ctrl.name">
+        <input type="text" name="name" ng-model="$ctrl.name" required>
     </div>
     <div>
         <label for="salary">Salary:</label>
-        <input type="number" name="salary" ng-model="$ctrl.salary"> 
+        <input type="number" name="salary" ng-model="$ctrl.salary" required> 
     </div>
     <div>
-        <input type="button" value="Add" ng-click="$ctrl.onSubmit()" class="btn btn-primary">
-        <input type="button" value="Edit" ng-click="EditData()" class="btn btn-primary">
+        <input type="button" value="Save" ng-click="$ctrl.onAdd({
+            name:$ctrl.name,
+            salary:$ctrl.salary
+        })" class="btn btn-primary">
     </div>
 </div>

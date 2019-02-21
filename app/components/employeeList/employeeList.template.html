@@ -3,11 +3,12 @@
         <th>Id</th>
         <th>Name</th>
         <th>Salary</th>
+        <th></th>
     </thead>
-    <tr ng-repeat="emp in $ctrl.list" ng-click="$ctrl.selectEmp()">
+    <tr ng-repeat="emp in $ctrl.list" ng-click="$ctrl.onSelect({emp:emp})">
         <td>{{emp.id}}</td>
         <td>{{emp.name}}</td>
         <td>{{emp.salary}}</td>
-        <td><input type="button" value="Delete" ng-click="$ctrl.deleteEmp()"></td>
+        <td><input type="button" value="Delete" ng-click="$ctrl.onDelete({emp:emp})"></td>
     </tr>
 </table>

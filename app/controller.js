@@ -2,6 +2,7 @@ var app = angular.module("mainApp",[])    ;
 app.controller("mainController",function ($scope){
     $scope.emplist=[];
     $scope.id=0;
+    $scope.flag=false;
     $scope.firstBtnText = 'button1';
     $scope.secondBtnText = 'my another button2';
     $scope.happyText = 'I am happy';
@@ -11,41 +12,43 @@ app.controller("mainController",function ($scope){
     };
 
     $scope.AddData = function (name,salary){
-        var emp ={
-            id:$scope.emplist.length + 1,
-            name:name,
-            salary:salary
-
-        };
-        $scope.emplist.push(emp);
-        $scope.id=emp.id;
+        var self=this;
+        if(!$scope.flag){
+            var emp ={
+                id:$scope.emplist.length + 1,
+                name:name,
+                salary:salary
+            };
+            $scope.emplist.push(emp);
+        }else{
+            $scope.emplist.forEach(function(e){
+                if(e.id === $scope.id){
+                    e.name=name;
+                    e.salary=salary;
+                }
+            })
+        }
+       
         ClearModel();
     };
 
     $scope.deleteData = function (emp){
+     
         var index=$scope.emplist.indexOf(emp);
         $scope.emplist.splice(index,1);
     }
 
     $scope.selectData = function (emp){
+        $scope.selectedEmp=emp;
         $scope.id=emp.id;
-        //$scope.name=emp.name;
-        //$scope.salary=emp.salary;
-        name=emp.name,
-        salary=emp.salary
+        $scope.flag=true;
+      
     }
 
-    $scope.EditData = function (emp){
-        if(emp.id == $scope.id){
-            emp.name=$scope.name;
-            emp.salary=$scope.salary;
-        }
-       
-    }
-
+   
     function ClearModel(){
-       // $scope.id=0;
-        $scope.name='';
-        $scope.salary='';
-    }
+        $scope.flag=false;
+        $scope.id="";
+       $scope.selectedEmp={name:"",salary:""}
+    } 
 })
