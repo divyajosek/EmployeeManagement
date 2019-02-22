@@ -1,6 +1,14 @@
 var app = angular.module("mainApp",[])    ;
-app.controller("mainController",function ($scope){
-    $scope.emplist=[];
+app.controller("mainController",function ($scope,AppService){
+    //$scope.emplist=[];
+    //$scope.emplist=AppService.getUsers();
+    function getUsers(){
+        var promise = AppService.getUsers();
+        promise.then(function(res){
+            $scope.emplist = res;
+        })
+    }
+    getUsers();
     $scope.id=0;
     $scope.flag=false;
     $scope.firstBtnText = 'button1';
@@ -19,12 +27,22 @@ app.controller("mainController",function ($scope){
                 name:name,
                 salary:salary
             };
-            $scope.emplist.push(emp);
+           // $scope.emplist.push(emp);
+           var promise1 = AppService.postUsers(emp);
+           promise1.then(function(res){
+            getUsers();
+           })
         }else{
             $scope.emplist.forEach(function(e){
                 if(e.id === $scope.id){
                     e.name=name;
                     e.salary=salary;
+                    
+                    var promise3 = AppService.updateUsers(e);
+                    promise3.then(function(res){
+                     $scope.msg = "Update Data Successfully!";
+                     getUsers();
+                    })  
                 }
             })
         }
@@ -34,8 +52,14 @@ app.controller("mainController",function ($scope){
 
     $scope.deleteData = function (emp){
      
-        var index=$scope.emplist.indexOf(emp);
-        $scope.emplist.splice(index,1);
+       // var index=$scope.emplist.indexOf(emp);
+       // $scope.emplist.splice(index,1);
+ 
+       var promise2 = AppService.deleteUsers(emp.id);
+       promise2.then(function(res){
+        getUsers();
+
+       })
     }
 
     $scope.selectData = function (emp){
